@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>你願意嗎？</title>
+  <title>Will You?</title>
   <style>
     * {
       margin: 0;
@@ -18,8 +18,13 @@
       align-items: center;
       justify-content: center;
       background: linear-gradient(135deg, #fce4ec, #f8bbd0, #f48fb1);
-      font-family: "Microsoft JhengHei", "PingFang TC", sans-serif;
+      font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
       overflow: hidden;
+    }
+
+    .kitty-img {
+      width: 240px;
+      margin-bottom: 1.5rem;
     }
 
     h1 {
@@ -70,38 +75,36 @@
   </style>
 </head>
 <body>
-  <h1>你願意當我的寶貝嗎？</h1>
+  <img class="kitty-img" src="hello-kitty.png" alt="Hello Kitty Love">
+  <h1>Will you be my sweetheart?</h1>
   <div class="buttons">
-    <button class="yes-button" onclick="handleYesClick()">好啊！</button>
-    <button class="no-button" onclick="handleNoClick()">不要</button>
+    <button class="yes-button" onclick="handleYesClick()">Yes!</button>
+    <button class="no-button" onclick="handleNoClick()">No</button>
   </div>
 
   <script>
     let messageIndex = 0;
     const messages = [
-      "你確定嗎？",
-      "真的確定嗎？",
-      "再想想看嘛...",
-      "我會很傷心的...",
-      "真的不行嗎？",
-      "好吧，我再問一次..."
+      "Are you sure?",
+      "Really sure?",
+      "Think about it again...",
+      "I'll be so sad...",
+      "Please? Pretty please?",
+      "OK, let me ask one more time..."
     ];
 
     function handleNoClick() {
       const noButton = document.querySelector(".no-button");
       const yesButton = document.querySelector(".yes-button");
 
-      // 更改拒絕按鈕的文字
       noButton.textContent = messages[messageIndex];
       messageIndex = (messageIndex + 1) % messages.length;
 
-      // 獲取當前字體大小並放大 1.5 倍
       const currentSize = parseFloat(window.getComputedStyle(yesButton).fontSize);
       yesButton.style.fontSize = `${currentSize * 1.5}px`;
     }
 
     function handleYesClick() {
-      // 跳轉到成功頁面
       window.location.href = "yes_page.html";
     }
   </script>
