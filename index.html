@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>你願意嗎？</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #fce4ec, #f8bbd0, #f48fb1);
+      font-family: "Microsoft JhengHei", "PingFang TC", sans-serif;
+      overflow: hidden;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      color: #c2185b;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .yes-button, .no-button {
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      font-family: inherit;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .yes-button {
+      background: #e91e63;
+      color: #fff;
+      font-size: 1.5rem;
+      padding: 1rem 2.5rem;
+    }
+
+    .yes-button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 20px rgba(233, 30, 99, 0.4);
+    }
+
+    .no-button {
+      background: #b0bec5;
+      color: #fff;
+      font-size: 1rem;
+      padding: 0.75rem 1.5rem;
+    }
+
+    .no-button:hover {
+      background: #90a4ae;
+    }
+  </style>
+</head>
+<body>
+  <h1>你願意當我的寶貝嗎？</h1>
+  <div class="buttons">
+    <button class="yes-button" onclick="handleYesClick()">好啊！</button>
+    <button class="no-button" onclick="handleNoClick()">不要</button>
+  </div>
+
+  <script>
+    let messageIndex = 0;
+    const messages = [
+      "你確定嗎？",
+      "真的確定嗎？",
+      "再想想看嘛...",
+      "我會很傷心的...",
+      "真的不行嗎？",
+      "好吧，我再問一次..."
+    ];
+
+    function handleNoClick() {
+      const noButton = document.querySelector(".no-button");
+      const yesButton = document.querySelector(".yes-button");
+
+      // 更改拒絕按鈕的文字
+      noButton.textContent = messages[messageIndex];
+      messageIndex = (messageIndex + 1) % messages.length;
+
+      // 獲取當前字體大小並放大 1.5 倍
+      const currentSize = parseFloat(window.getComputedStyle(yesButton).fontSize);
+      yesButton.style.fontSize = `${currentSize * 1.5}px`;
+    }
+
+    function handleYesClick() {
+      // 跳轉到成功頁面
+      window.location.href = "yes_page.html";
+    }
+  </script>
+</body>
+</html>

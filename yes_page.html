@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>太好了！</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #fce4ec, #f8bbd0, #f48fb1);
+      font-family: "Microsoft JhengHei", "PingFang TC", sans-serif;
+      overflow: hidden;
+    }
+
+    .heart {
+      font-size: 6rem;
+      animation: pulse 1s ease-in-out infinite;
+    }
+
+    h1 {
+      font-size: 3rem;
+      color: #c2185b;
+      margin: 1.5rem 0;
+      text-align: center;
+    }
+
+    p {
+      font-size: 1.25rem;
+      color: #880e4f;
+      text-align: center;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(-100vh); opacity: 0; }
+    }
+
+    .floating-heart {
+      position: fixed;
+      font-size: 1.5rem;
+      animation: float 4s ease-in forwards;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="heart">&#10084;&#65039;</div>
+  <h1>我就知道你會答應的！</h1>
+  <p>你是我最重要的人</p>
+
+  <script>
+    function createFloatingHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("floating-heart");
+      heart.textContent = ["&#10084;&#65039;", "&#128149;", "&#128151;", "&#128147;", "&#128155;"][Math.floor(Math.random() * 5)];
+      heart.innerHTML = heart.textContent;
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.bottom = "0";
+      heart.style.animationDuration = (3 + Math.random() * 3) + "s";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 6000);
+    }
+
+    setInterval(createFloatingHeart, 300);
+  </script>
+</body>
+</html>
